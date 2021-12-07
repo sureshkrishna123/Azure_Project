@@ -11,7 +11,7 @@ from io import BytesIO
 # To install this module, run:
 # python -m pip install Pillow
 from PIL import Image, ImageDraw
-from azure import cognitiveservices#.vision.face import FaceClient
+import azure #import cognitiveservices.vision.face import FaceClient
 #from msrest.authentication import CognitiveServicesCredentials
 #from azure.cognitiveservices.vision.face.models import TrainingStatusType, Person
 st.title("Face Recognition(Powered by Azure)")
