@@ -1,6 +1,3 @@
-import streamlit as st
-import pandas as pd
-import numpy as np
 import asyncio
 import io
 import glob
@@ -11,7 +8,12 @@ import uuid
 import requests
 from urllib.parse import urlparse
 from io import BytesIO
-from PIL import Image
+# To install this module, run:
+# python -m pip install Pillow
+from PIL import Image, ImageDraw
+from azure.cognitiveservices.vision.face import FaceClient
+from msrest.authentication import CognitiveServicesCredentials
+from azure.cognitiveservices.vision.face.models import TrainingStatusType, Person
 st.title("Face Recognition(Powered by Azure)")
 
 
@@ -36,7 +38,7 @@ if button_translate and uploaded_file:
     ENDPOINT = "https://recognition-ai.cognitiveservices.azure.com/"
 
     
-    constructed_url = ENDPOINT + KEY
+    face_client = FaceClient(ENDPOINT, CognitiveServicesCredentials(KEY))
     
 
     
