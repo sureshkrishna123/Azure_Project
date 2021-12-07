@@ -1,4 +1,4 @@
-from msrest.authentication import CognitiveServicesCredentials
+
 
 import asyncio
 import io
