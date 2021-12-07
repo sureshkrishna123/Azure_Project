@@ -1,4 +1,4 @@
-pip! install azure-cognitiveservices-vision-computervision
+pip install azure-cognitiveservices-vision-computervision
 
 import asyncio
 import io
