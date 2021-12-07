@@ -1,4 +1,4 @@
-pip install azure-cognitiveservices-vision-computervision
+from msrest.authentication import CognitiveServicesCredentials
 
 import asyncio
 import io
