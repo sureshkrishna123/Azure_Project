@@ -35,7 +35,8 @@ if button_translate and uploaded_file:
     # This endpoint will be used in all examples in this quickstart.
     ENDPOINT = "https://recognition-ai.cognitiveservices.azure.com/"
 
-    face_client = FaceClient(ENDPOINT, CognitiveServicesCredentials(KEY))
+    
+    constructed_url = ENDPOINT + KEY
     
 
     
