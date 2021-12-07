@@ -1,4 +1,4 @@
-!pip install --upgrade azure-cognitiveservices-vision-face
+pip install azure-cognitiveservices-vision-face
 
 import asyncio
 import io
