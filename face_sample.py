@@ -1,5 +1,5 @@
 import pip
-
+pip install --upgrade azure-cognitiveservices-vision-face
 import asyncio
 import io
 import glob
