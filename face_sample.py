@@ -1,5 +1,5 @@
 import pip
-from azure
+import azure
 import asyncio
 import io
 import glob
