@@ -1,5 +1,5 @@
 import pip
-from azure.cognitiveservices.vision.face import FaceClient
+from azure
 import asyncio
 import io
 import glob
