@@ -1,4 +1,4 @@
-install python-pip
+import pip
 
 import asyncio
 import io
