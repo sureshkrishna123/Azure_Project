@@ -1,4 +1,4 @@
-lpip install azure-cognitiveservices-vision-face
+
 
 import asyncio
 import io
