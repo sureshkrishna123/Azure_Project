@@ -1,4 +1,4 @@
-import pypi_install
+install python-pip
 
 import asyncio
 import io
