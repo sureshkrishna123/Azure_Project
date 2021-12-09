@@ -59,7 +59,7 @@ if button_translate and uploaded_file:
         for face in faces:
             draw.rectangle(getRectangle(face), outline='red')
         return output_image
-   image_data= Image.open(uploaded_file)
+   image_data= open(image', "rb").read()
 
    image = draw_face(image_data)
 
