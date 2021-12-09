@@ -14,7 +14,7 @@ from io import BytesIO
 # python -m pip install Pillow
 from io import BytesIO
 from PIL import Image, ImageDraw
-import matplotlib.pyplot as plt
+
 
 st.title("Face Recognition(Powered by Azure)")
 
@@ -63,6 +63,6 @@ if button_translate and uploaded_file:
         image_data = open('tst.jpg', "rb").read()
 
         image = draw_face(image_data)
-        plt.imshow(image)
+        
 
         st.image(image, caption='Output image')
