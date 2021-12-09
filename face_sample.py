@@ -65,4 +65,4 @@ if button_translate and uploaded_file:
         image = draw_face(image_data)
         plt.imshow(image)
 
-    st.image(image, caption='Output image')
+        st.image(image, caption='Output image')
