@@ -12,10 +12,10 @@ from urllib.parse import urlparse
 from io import BytesIO
 # To install this module, run:
 # python -m pip install Pillow
+from io import BytesIO
 from PIL import Image, ImageDraw
-from azure.cognitiveservices.vision.face import FaceClient
-from msrest.authentication import CognitiveServicesCredentials
-from azure.cognitiveservices.vision.face.models import TrainingStatusType, Person
+import matplotlib.pyplot as plt
+
 st.title("Face Recognition(Powered by Azure)")
 
 
@@ -34,41 +34,35 @@ button_translate=st.button('Click me',help='To give the image')
 
 if button_translate and uploaded_file:
     
-    import requests
-from io import BytesIO
-from PIL import Image, ImageDraw
-import matplotlib.pyplot as plt
+   def draw_face(img):
 
+        subscription_key = 'ea8c44f876804e43ab35a26a09d59da5'  # Replace with a valid subscription key (keeping the quotes in place).
+        BASE_URL = "https://recognition-ai.cognitiveservices.azure.com/" + '/face/v1.0/detect'  # Replace with your regional Base URL
+        headers = {
+        # Request headers
+        'Content-Type': 'application/octet-stream',   # this should be the content type
+        'Ocp-Apim-Subscription-Key': subscription_key,
+        }
+        response = requests.post(BASE_URL,  headers=headers, data=img)
+        faces = response.json()
+        print(faces)
+        def getRectangle(faceDictionary):
+            rect = faceDictionary['faceRectangle']
+            left = rect['left']
+            top = rect['top']
+            bottom = left + rect['height']
+            right = top + rect['width']
+            return ((left, top), (bottom, right))
 
-def draw_face(img):
+        output_image = Image.open(BytesIO(img))
+    #   For each face returned use the face rectangle and draw a red box.
+        draw = ImageDraw.Draw(output_image)
+        for face in faces:
+            draw.rectangle(getRectangle(face), outline='red')
+        return output_image
+        image_data = open('tst.jpg', "rb").read()
 
-    subscription_key = 'ea8c44f876804e43ab35a26a09d59da5'  # Replace with a valid subscription key (keeping the quotes in place).
-    BASE_URL = "https://recognition-ai.cognitiveservices.azure.com/" + '/face/v1.0/detect'  # Replace with your regional Base URL
-    headers = {
-    # Request headers
-    'Content-Type': 'application/octet-stream',   # this should be the content type
-    'Ocp-Apim-Subscription-Key': subscription_key,
-    }
-    response = requests.post(BASE_URL,  headers=headers, data=img)
-    faces = response.json()
-    print(faces)
-    def getRectangle(faceDictionary):
-        rect = faceDictionary['faceRectangle']
-        left = rect['left']
-        top = rect['top']
-        bottom = left + rect['height']
-        right = top + rect['width']
-        return ((left, top), (bottom, right))
-
-    output_image = Image.open(BytesIO(img))
-    #For each face returned use the face rectangle and draw a red box.
-    draw = ImageDraw.Draw(output_image)
-    for face in faces:
-        draw.rectangle(getRectangle(face), outline='red')
-    return output_image
-    image_data = open('tst.jpg', "rb").read()
-
-    image = draw_face(image_data)
-    plt.imshow(image)
+        image = draw_face(image_data)
+        plt.imshow(image)
 
     st.image(image, caption='Output image')
