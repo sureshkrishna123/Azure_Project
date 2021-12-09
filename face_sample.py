@@ -61,6 +61,6 @@ if button_translate and uploaded_file:
         return output_image
    image_data = open('tst.jpg', "rb").read()
 
-   image = draw_face(image_data)
+   image = draw_face(image)
 
    st.image(image, caption='Output image')
