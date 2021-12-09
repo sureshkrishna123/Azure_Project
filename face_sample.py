@@ -1,4 +1,3 @@
-
 import streamlit as st
 import asyncio
 import io
@@ -33,14 +32,14 @@ select=st.selectbox("select what you want to find in the image" ,['Faces','Age &
 button_translate=st.button('Click me',help='To give the image')
 
 if button_translate and uploaded_file:
-    
+
    def draw_face(img):
 
-        subscription_key = 'ea8c44f876804e43ab35a26a09d59da5'  # Replace with a valid subscription key (keeping the quotes in place).
-        BASE_URL = "https://recognition-ai.cognitiveservices.azure.com/" + '/face/v1.0/detect'  # Replace with your regional Base URL
+        subscription_key = 'ea8c44f876804e43ab35a26a09d59da5'  
+        BASE_URL = "https://recognition-ai.cognitiveservices.azure.com/" + '/face/v1.0/detect'  
         headers = {
         # Request headers
-        'Content-Type': 'application/octet-stream',   # this should be the content type
+        'Content-Type': 'application/octet-stream',  
         'Ocp-Apim-Subscription-Key': subscription_key,
         }
         response = requests.post(BASE_URL,  headers=headers, data=img)
@@ -60,9 +59,8 @@ if button_translate and uploaded_file:
         for face in faces:
             draw.rectangle(getRectangle(face), outline='red')
         return output_image
-    image_data = open('tst.jpg', "rb").read()
+   image_data = open('tst.jpg', "rb").read()
 
-    image = draw_face(image_data)
-        
+   image = draw_face(image_data)
 
-    st.image(image, caption='Output image')
+   st.image(image, caption='Output image')
