@@ -24,20 +24,21 @@ st.header('Face Recognition:')
 st.text("Using Azure I build to **_detect, identify and analyse_ faces** in images.")
 st.text("Detect the objects in images")
 
-def load_image(image_file):
-	img = Image.open(image_file)
-	return img
+
 
 image_file =  st.file_uploader("Upload Images", type=["png","jpg","jpeg"])
 
-st.image(load_image(image_file),width=250,caption='Uploaded image')
-#st.image(uploaded_file, caption='Uploaded image')
+if image_file is not None:
+  img = Image.open(image_file)
+
+st.image(image_file,width=250,caption='Uploaded image')
+
 
 select=st.selectbox("select what you want to find in the image" ,['Faces','Age & emotions ','objects'])
 
 button_translate=st.button('Click me',help='To give the image')
 
-if button_translate and image_file is not None:
+if button_translate and image_file :
 
    def draw_face(img):
 
