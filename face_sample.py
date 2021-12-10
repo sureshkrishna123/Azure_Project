@@ -24,9 +24,9 @@ st.header('Face Recognition:')
 st.text("Using Azure I build to **_detect, identify and analyse_ faces** in images.")
 st.text("Detect the objects in images")
 uploaded_file = st.file_uploader("Choose a file",type=None)
-image = Image.open(uploaded_file)
+#image = Image.open(uploaded_file)
 
-st.image(image, caption='Uploaded image')
+st.image(uploaded_file, caption='Uploaded image')
 
 select=st.selectbox("select what you want to find in the image" ,['Faces','Age & emotions ','objects'])
 
