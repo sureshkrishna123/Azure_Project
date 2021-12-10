@@ -67,7 +67,7 @@ if button_translate and image_file :
         for face in faces:
             draw.rectangle(getRectangle(face), outline='red')
         return output_image
-   image_data= image.read()
+   image_data = open(image_file, "rb").read()
 
    image = draw_face(image_data)
 
