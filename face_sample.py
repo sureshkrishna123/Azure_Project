@@ -12,7 +12,8 @@ from io import BytesIO
 # To install this module, run:
 # python -m pip install Pillow
 from io import BytesIO
-from PIL import Image, ImageDraw
+from PIL import Image
+from PIL import ImageDraw
 
 
 st.title("Face Recognition(Powered by Azure)")
@@ -59,7 +60,7 @@ if button_translate and uploaded_file:
         for face in faces:
             draw.rectangle(getRectangle(face), outline='red')
         return output_image
-   image_data= open(image, "rb").read()
+   image_data= image.read()
 
    image = draw_face(image_data)
 
