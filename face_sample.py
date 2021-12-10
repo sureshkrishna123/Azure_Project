@@ -30,7 +30,8 @@ st.text("Detect the objects in images")
 image_file =  st.file_uploader("Upload Images", type=["png","jpg","jpeg"])
 
 if image_file is not None:
-  img = Image.open(image_file)
+  img=open(image_file, "rb").read()
+  #img = Image.open(image_file)
 
   st.image(image_file,width=250,caption='Uploaded image')
 
