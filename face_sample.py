@@ -37,7 +37,7 @@ select=st.selectbox("select what you want to find in the image" ,['Faces','Age &
 
 button_translate=st.button('Click me',help='To give the image')
 
-if button_translate and uploaded_file:
+if button_translate and image_file is not None:
 
    def draw_face(img):
 
