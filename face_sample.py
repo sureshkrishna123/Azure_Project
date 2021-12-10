@@ -23,9 +23,13 @@ st.header('Face Recognition:')
 
 st.text("Using Azure I build to **_detect, identify and analyse_ faces** in images.")
 st.text("Detect the objects in images")
-uploaded_file =  st.file_uploader("Upload Images", type=["png","jpg","jpeg"])
 
-image = Image.open(uploaded_file)
+def load_image(image_file):
+	img = Image.open(image_file)
+	return img
+
+image_file =  st.file_uploader("Upload Images", type=["png","jpg","jpeg"])
+
 st.image(load_image(image_file),width=250,caption='Uploaded image')
 #st.image(uploaded_file, caption='Uploaded image')
 
