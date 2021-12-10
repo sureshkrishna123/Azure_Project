@@ -27,7 +27,7 @@ st.text("Using Azure I build to **_detect, identify and analyse_ faces** in imag
 st.text("Detect the objects in images")
 
  
-image_url=st.text_input('Movie title', 'Life of Brian')
+
 
 image_file =  st.file_uploader("Upload Images", type=["png","jpg","jpeg"])
 
