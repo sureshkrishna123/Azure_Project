@@ -58,7 +58,7 @@ if button_translate and image_file :
             #'recognitionModel':'recognition_04',
             #'returnFaceAttributes':['age', 'emotion']
     
-         }
+        # }
         response = requests.post(BASE_URL, headers=headers, data=image)
         faces = response.json()
         print(faces)
