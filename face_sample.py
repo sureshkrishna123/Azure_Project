@@ -53,13 +53,13 @@ if button_translate and image_file :
         'Content-Type': 'application/octet-stream',  
         'Ocp-Apim-Subscription-Key': subscription_key,
         }
-        params = {
-            'detectionModel':'detection_01',
-            'recognitionModel':'recognition_04',
-            'returnFaceAttributes':['age', 'emotion']
+        #params = {
+            #'detectionModel':'detection_01',
+            #'recognitionModel':'recognition_04',
+            #'returnFaceAttributes':['age', 'emotion']
     
          }
-        response = requests.post(BASE_URL, parms=prams, headers=headers, data=image)
+        response = requests.post(BASE_URL, headers=headers, data=image)
         faces = response.json()
         print(faces)
         def getRectangle(faceDictionary):
