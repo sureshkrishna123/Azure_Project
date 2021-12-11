@@ -64,7 +64,7 @@ if button_translate and image_file :
             right = top + rect['width']
             return ((left, top), (bottom, right))
 
-        output_image = Image.open(BytesIO(img))
+        output_image = Image.open(BytesIO(image))
     #   For each face returned use the face rectangle and draw a red box.
         draw = ImageDraw.Draw(output_image)
         for face in faces:
