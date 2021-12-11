@@ -37,7 +37,7 @@ if image_file is not None:
   st.image(image_file,width=250,caption='Uploaded image')
 
 output = io.BytesIO()
-img.save(output, format="png")
+img.save(output, format="jpg")
 image = output.getvalue()
 
 select=st.selectbox("select what you want to find in the image" ,['Faces','Age & emotions ','objects'])
