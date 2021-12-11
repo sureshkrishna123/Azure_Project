@@ -64,10 +64,7 @@ if button_translate and image_file :
             top = rect['top']
             bottom = left + rect['height']
             right = top + rect['width']
-            ract=faceDictionary['faceAttributes']
-            age=ract['age']
-            gender=ract['gender']
-            return ((left, top), (bottom, right),(age,gender))
+            return ((left, top), (bottom, right))
 
 
         output_image = Image.open(BytesIO(image))
