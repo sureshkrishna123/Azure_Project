@@ -64,7 +64,11 @@ if button_translate and image_file :
             top = rect['top']
             bottom = left + rect['height']
             right = top + rect['width']
-            return ((left, top), (bottom, right))
+            ract=faceDictionary['faceAttributes']
+            age=ract['age']
+            gender=ract['gender']
+            return ((left, top), (bottom, right),(age,gender))
+
 
         output_image = Image.open(BytesIO(image))
     #   For each face returned use the face rectangle and draw a red box.
