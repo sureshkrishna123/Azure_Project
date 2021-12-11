@@ -50,15 +50,11 @@ if button_translate and image_file :
         BASE_URL = "https://recognition-ai.cognitiveservices.azure.com/" + '/face/v1.0/detect'  
         headers = {
         # Request headers
-        'Content-Type': 'application/octet-stream',  
+        'Content-Type': 'application/octet-stream', 
+        'recognitionModel': 'recognition_01' ,
         'Ocp-Apim-Subscription-Key': subscription_key,
+        'detectionModel': 'detection_01',
         }
-        #params = {
-            #'detectionModel':'detection_01',
-            #'recognitionModel':'recognition_04',
-            #'returnFaceAttributes':['age', 'emotion']
-    
-        # }
         response = requests.post(BASE_URL, headers=headers, data=image)
         faces = response.json()
         print(faces)
