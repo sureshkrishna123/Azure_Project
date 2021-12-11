@@ -36,6 +36,9 @@ if image_file is not None:
 
   st.image(image_file,width=250,caption='Uploaded image')
 
+output = io.BytesIO()
+img.save(output, format="png")
+image = output.getvalue()
 
 select=st.selectbox("select what you want to find in the image" ,['Faces','Age & emotions ','objects'])
 
@@ -52,7 +55,7 @@ if button_translate and image_file :
         'Content-Type': 'application/octet-stream',  
         'Ocp-Apim-Subscription-Key': subscription_key,
         }
-        response = requests.post(BASE_URL,  headers=headers, data=img)
+        response = requests.post(BASE_URL,  headers=headers, data=image)
         faces = response.json()
         print(faces)
         def getRectangle(faceDictionary):
