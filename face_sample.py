@@ -15,7 +15,27 @@ from io import BytesIO
 from PIL import Image
 from PIL import ImageDraw
 
+st.set_page_config(layout="wide")
+st.markdown(
+    """
+    <style>
+    [data-testid="stSidebar"][aria-expanded="true"] > div:first-child {
+        width: 350px;
+    }
+    [data-testid="stSidebar"][aria-expanded="false"] > div:first-child {
+        width: 350px;
+        margin-left: -350px;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
+st.sidebar.title('Test the API powered by azure')
+st.sidebar.subheader('select API want to test')
+app_mode = st.sidebar.selectbox('Choose the App mode',
+['About App','Translator','Face recognization']
+)
 
 
 st.title("Face Recognition(Powered by Azure)")
