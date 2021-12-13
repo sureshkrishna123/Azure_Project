@@ -34,15 +34,32 @@ st.markdown(
 st.sidebar.title('Test the API powered by azure')
 st.sidebar.subheader('select API want to test')
 app_mode = st.sidebar.selectbox('Choose the App mode',
-['Face Recognization','Translator']
+['About me','Face Recognization','Translator']
 )
+
+if app_mode =='About me':
+
+    st.markdown('''
+              # About Me \n 
+                Hey this is ** N.V.Suresh Krishna **. \n
+                
+                
+                Also check me out on Social Media
+                - [git-Hub](https://github.com/sureshkrishna123)
+                - [LinkedIn](https://www.linkedin.com/in/suresh-krishna-nv/)
+                - [Instagram](https://www.instagram.com/worldofsuresh._/)
+                - [Portfolio](https://sureshkrishna123.github.io/sureshportfolio/)/n
+                If you are interested in building more about Microsoft Azure then   [click here](https://azure.microsoft.com/en-in/)\n
+               
+
+
 
 
 if app_mode=='Face Recognization':
   st.image(os.path.join('./images','facial-recognition-software-image.jpg'),use_column_width=True )
   st.title("Face Recognition(Powered by Azure)")
   st.header('Face Recognition:')
-  st.text("Using Azure I build to **_detect, identify and analyse_ faces** in images.")
+  st.text("Using Azure I build to ** detect, identify and analyse faces ** in images.")
   st.text("Detect the objects in images")
   
   image_file =  st.file_uploader("Upload Images", type=["png","jpg","jpeg"])
