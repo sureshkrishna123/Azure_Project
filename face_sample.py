@@ -48,7 +48,7 @@ if app_mode =='About me':
                 - [git-Hub](https://github.com/sureshkrishna123)
                 - [LinkedIn](https://www.linkedin.com/in/suresh-krishna-nv/)
                 - [Instagram](https://www.instagram.com/worldofsuresh._/)
-                - [Portfolio](https://sureshkrishna123.github.io/sureshportfolio/)/n
+                - [Portfolio](https://sureshkrishna123.github.io/sureshportfolio/)\n
                 If you are interested in building more about Microsoft Azure then   [click here](https://azure.microsoft.com/en-in/)\n
                 ''')
                
