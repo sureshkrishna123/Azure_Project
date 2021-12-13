@@ -16,7 +16,7 @@ from PIL import Image
 from PIL import ImageDraw
 
 st.set_page_config(layout="wide")
-st.sidebar.image('/images/Azure_Image.png', width=200)
+st.sidebar.image('images/Azure_Image.png', width=200)
 st.sidebar.header('A website using Azure Api')
 st.sidebar.markdown('Face Api,Translator Api')
 
