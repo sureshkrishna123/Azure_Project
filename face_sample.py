@@ -213,9 +213,10 @@ if app_mode =='Translator':
 
         request = requests.post(constructed_url, params=params, headers=headers, json=body)
         response123 = request.json()
-
-
-        st.success(json.dumps(response123, sort_keys=True, ensure_ascii=False, indent=4, separators=(',', ': ')))
+        dump=json.dumps(response123, sort_keys=True, ensure_ascii=False, indent=4, separators=(',', ': '))
+        response=json.loads(dump)
+        conv_str=str(response)
+        st.success(conv_str[55:])
 
     elif button_detect:
         st.error("!! Please enter input in any language")
