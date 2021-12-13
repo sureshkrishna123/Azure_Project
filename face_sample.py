@@ -16,26 +16,21 @@ from PIL import Image
 from PIL import ImageDraw
 
 st.set_page_config(layout="wide")
-st.markdown(
-    """
-    <style>
-    [data-testid="stSidebar"][aria-expanded="true"] > div:first-child {
-        width: 350px;
-    }
-    [data-testid="stSidebar"][aria-expanded="false"] > div:first-child {
-        width: 350px;
-        margin-left: -350px;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True,
+st.sidebar.image('src/utils/streamlit/images/800px-IMDB_Logo_2016.svg.png', width=200)
+st.sidebar.header('Público, crítica y taquilla en IMDb')
+st.sidebar.markdown('Análisis exploratorio de datos | Películas 2014 a 2019')
+
+
+app_mode = st.sidebar.radio(
+    "",
+    ("About Me","Face Recognization","Translator"),
 )
 
-st.sidebar.title('Test the API powered by azure')
-st.sidebar.subheader('select API want to test')
-app_mode = st.sidebar.selectbox('Choose the App mode',
-['About me','Face Recognization','Translator']
-)
+
+st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+
+st.sidebar.markdown('---')
+st.sidebar.write('N.V.Suresh Krishna | sureshkrishnanv24@gmail.com https://github.com/sureshkrishna123')
 
 if app_mode =='About me':
 
