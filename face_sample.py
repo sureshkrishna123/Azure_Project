@@ -32,7 +32,7 @@ st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', uns
 st.sidebar.markdown('---')
 st.sidebar.write('N.V.Suresh Krishna | sureshkrishnanv24@gmail.com https://github.com/sureshkrishna123')
 
-if app_mode =='About me':
+if app_mode =='About Me':
 
     st.markdown('''
               # About Me \n 
