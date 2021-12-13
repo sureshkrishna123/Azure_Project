@@ -97,6 +97,7 @@ for face in response_detection:
 img.show()
 img.save('test.jpg')
 
+
 # Detect if a face shows up in other photos/images
 image='http://www.historyplace.com/kennedy/president-family-portrait-closeup.jpg'
 response_detected_faces = face_client.face.detect_with_url(
