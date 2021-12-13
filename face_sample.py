@@ -16,9 +16,9 @@ from PIL import Image
 from PIL import ImageDraw
 
 st.set_page_config(layout="wide")
-st.sidebar.image('src/utils/streamlit/images/800px-IMDB_Logo_2016.svg.png', width=200)
-st.sidebar.header('Público, crítica y taquilla en IMDb')
-st.sidebar.markdown('Análisis exploratorio de datos | Películas 2014 a 2019')
+
+st.sidebar.header('A website using Azure Api')
+st.sidebar.markdown('Face Api,Translator Api')
 
 
 app_mode = st.sidebar.radio(
