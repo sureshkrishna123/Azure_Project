@@ -101,7 +101,7 @@ if app_mode=='Face Recognization':
     #   For each face returned use the face rectangle and draw a red box.
         draw = ImageDraw.Draw(output_image)
         for face in faces:
-            draw.rectangle(getRectangle(face), outline='red')
+            draw.rectangle(getRectangle(face), outline='red',width=2)
         return output_image
    #image_data = open(image_file, "rb").read()
 
