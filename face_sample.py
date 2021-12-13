@@ -39,6 +39,7 @@ app_mode = st.sidebar.selectbox('Choose the App mode',
 
 
 if app_mode=='Face Recognization':
+  st.image(os.path.join('./images','facial-recognition-software-image.jpg'),use_column_width=True )
   st.title("Face Recognition(Powered by Azure)")
   st.header('Face Recognition:')
   st.text("Using Azure I build to **_detect, identify and analyse_ faces** in images.")
