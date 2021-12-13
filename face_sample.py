@@ -112,9 +112,9 @@ if app_mode=='Face Recognization':
 if app_mode =='Translator':
    
     st.image(os.path.join('./images','unnamed.png'),use_column_width=True )
-    st.markdown("<h1 style='text-align: center; color: skyblue; '>Welcome to our page Translate a language now just in no time: </h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color: skyblue; '> language Translator: </h1>", unsafe_allow_html=True)
 
-    st.markdown("Translator is a cloud-based machine translation service you can use to translate text in with a simple REST API call. The service uses modern neural machine translation technology and offers statistical machine translation technology. Custom Translator is an extension of Translator, which allows you to build neural translation systems. The customized translation system can be used to translate text with Translator or Microsoft Speech Services")
+    
     
     st.markdown("For more documentation on language support in Azure:[click here](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/language-support)")
     st.markdown('---')
