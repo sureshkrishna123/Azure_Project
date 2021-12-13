@@ -50,10 +50,8 @@ if app_mode =='About me':
                 - [Instagram](https://www.instagram.com/worldofsuresh._/)
                 - [Portfolio](https://sureshkrishna123.github.io/sureshportfolio/)/n
                 If you are interested in building more about Microsoft Azure then   [click here](https://azure.microsoft.com/en-in/)\n
+                ''')
                
-
-
-
 
 if app_mode=='Face Recognization':
   st.image(os.path.join('./images','facial-recognition-software-image.jpg'),use_column_width=True )
