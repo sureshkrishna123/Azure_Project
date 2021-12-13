@@ -34,11 +34,11 @@ st.markdown(
 st.sidebar.title('Test the API powered by azure')
 st.sidebar.subheader('select API want to test')
 app_mode = st.sidebar.selectbox('Choose the App mode',
-['Face recognization','Translator']
+['Face Recognization','Translator']
 )
 
 
-if app_mode=='Face Recognuzation':
+if app_mode=='Face Recognization':
   st.title("Face Recognition(Powered by Azure)")
   st.header('Face Recognition:')
   st.text("Using Azure I build to **_detect, identify and analyse_ faces** in images.")
