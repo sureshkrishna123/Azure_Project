@@ -33,7 +33,7 @@ st.sidebar.markdown('---')
 st.sidebar.write('N.V.Suresh Krishna | sureshkrishnanv24@gmail.com https://github.com/sureshkrishna123')
 
 if app_mode =='About Me':
-
+    st.sidebar.image('images/wp4498220.jpg', use_column_width=True)
     st.markdown('''
               # About Me \n 
                 Hey this is ** N.V.Suresh Krishna **. \n
