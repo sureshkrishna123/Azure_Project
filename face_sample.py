@@ -212,6 +212,7 @@ if app_mode =='Translator':
         response=json.loads(dump)
         conv_str=str(response)
         st.success(conv_str[55:])
+        st.spinner(text="Done")
 
     elif button_detect:
         st.error("!! Please enter input in any language")
