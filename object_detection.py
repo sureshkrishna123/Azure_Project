@@ -70,4 +70,4 @@ if button_translate and url_file :
         #plt.show()
 
    draw_face()
-   st.image(aux_im, caption=image_caption)
+   st.image(aux_im, caption='image_caption')
