@@ -6,15 +6,10 @@ import json
 from PIL import Image
 from io import BytesIO
 
-# Add your Computer Vision subscription key and endpoint to your environment variables.
-if 'COMPUTER_VISION_SUBSCRIPTION_KEY' in os.environ:
-    subscription_key = os.environ['COMPUTER_VISION_SUBSCRIPTION_KEY']
-else:
-    print("\nSet the COMPUTER_VISION_SUBSCRIPTION_KEY environment variable.\n**Restart your shell or IDE for changes to take effect.**")
-    sys.exit()
 
-if 'COMPUTER_VISION_ENDPOINT' in os.environ:
-    endpoint = os.environ['COMPUTER_VISION_ENDPOINT']
+subscription_key = 'COMPUTER_VISION_SUBSCRIPTION_KEY'
+
+endpoint = 'COMPUTER_VISION_ENDPOINT'
 
 analyze_url = endpoint + "vision/v3.1/analyze"
 
