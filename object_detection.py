@@ -29,47 +29,44 @@ st.text("Detect the objects in images")
  
 
 
-image_file =  st.file_uploader("Upload Images", type=["png","jpg","jpeg"])
+url_file =  title = st.text_input('Paste image URL')
 
-if image_file is not None:
-  img = Image.open(image_file)
-  st.image(image_file,width=250,caption='Uploaded image')
-  byte_io = BytesIO()
-  img.save(byte_io, 'PNG')
-  image = byte_io.getvalue()
 
 select=st.selectbox("select what you want to find in the image" ,['Faces','Age & emotions ','objects'])
 
 button_translate=st.button('Click me',help='To give the image')
 
-if button_translate and image_file :
-  def draw_face(img):
+if button_translate and url_file :
+  
 
 
 
 # Add your Computer Vision subscription key and endpoint to your environment variables.
 
-        subscription_key = 'afac470736ce49ca8352ec7c83736fc7'
-        endpoint = 'https://objectdetection21.cognitiveservices.azure.com/'
+        analyze_url = endpoint + "vision/v3.1/analyze"
+# Set image_url to the URL of an image that you want to analyze.
+        remote_image_url = "https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/landmark.jpg"
 
-        analyze_url = endpoint + "vision/v3.1/analyze"  
         headers = {'Ocp-Apim-Subscription-Key': subscription_key}
         params = {'visualFeatures': 'Categories,Description,Color'}
-        
-        response = requests.post(analyze_url, headers=headers,params=params, data=image)
+        data = {'url': url_file}
+        response = requests.post(analyze_url, headers=headers,params=params, json=data)
         response.raise_for_status()
+
+         # The 'analysis' object contains various fields that describe the image. The most
+         # relevant caption for the image is obtained from the 'description' property.
         analysis = response.json()
-        print(json.dumps(analysis))
+        print(json.dumps(response.json()))
         image_caption = analysis["description"]["captions"][0]["text"].capitalize()
-        response_image = requests.get(remote_image_url)
-# Display the image and overlay it with the caption.
+        response_image = requests.get(img)
+        # Display the image and overlay it with the caption.
+
         aux_im = Image.open(BytesIO(response_image.content))
         plt.imshow(aux_im)
         plt.axis("off")
         _ = plt.title(image_caption, size="x-large", y=-0.1)
         plt.show()
-   #image_data = open(image_file, "rb").read()
 
-  image = draw_face(img)
 
-  st.image(image, caption='Output image')
+
+  st.image(plt.show(), caption='Output image')
