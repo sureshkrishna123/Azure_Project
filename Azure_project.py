@@ -56,7 +56,7 @@ if app_mode=='Face Recognization':
   st.image(os.path.join('./images','facial-recognition-software-image.jpg'),use_column_width=True )
   st.title("Face Recognition(Powered by Azure)")
   st.header('Face Recognition:')
-  st.text("Using Azure I build to **_detect and identify and analyse_ faces** in images.")
+  st.markdown("Using Azure I build to **_detect, identify and analyse_ faces** in images.")
   st.text("Detect the objects in images")
   
   image_file =  st.file_uploader("Upload Images", type=["png","jpg","jpeg"])
@@ -116,7 +116,7 @@ if app_mode =='Object Detection':
 
     st.title("Object Recognition(Powered by Azure)")
 
-    st.text("Using Azure I build to **_Object_ detection** , it identify and analyse the image.")
+    st.markdown("Using Azure I build to **_Object_ detection** , it identify and analyse the image.")
     st.text("Detect the objects in images")
 
     url_file =  title = st.text_input('Paste image address URL')
