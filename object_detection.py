@@ -68,5 +68,4 @@ if button_translate and url_file :
         plt.show()
 
 
-
-  st.image(plt.show(), caption='Output image')
+st.image(plt.show(), caption='Output image')
