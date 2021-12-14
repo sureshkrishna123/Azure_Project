@@ -147,7 +147,8 @@ if app_mode =='Object Detection':
         
         # Display the image and overlay it with the caption.
         aux_im = Image.open(BytesIO(response_image.content))
-        st.image(aux_im, caption=image_caption)
+        caption=st.subheader(image_caption)
+        st.image(aux_im, caption=caption)
 
  
 if app_mode =='Translator':
