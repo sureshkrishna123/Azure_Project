@@ -69,4 +69,4 @@ if button_translate and url_file :
         #plt.show()
 
 
-st.image(aux_im, caption='image_caption')
+st.image(aux_im, caption=image_caption)
