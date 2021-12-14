@@ -1,72 +1,43 @@
-import streamlit as st
-import asyncio
-import io
-import glob
-import os
-import sys
-import time
-import uuid
 import requests
-from urllib.parse import urlparse
-from io import BytesIO
-# To install this module, run:
-# python -m pip install Pillow
-from io import BytesIO
-from PIL import Image
-from PIL import ImageDraw
+# If you are using a Jupyter Notebook, uncomment the following line.
+# %matplotlib inline
+import matplotlib.pyplot as plt
 import json
+from PIL import Image
+from io import BytesIO
 
-
-
-st.title("Face Recognition(Powered by Azure)")
-
-
-st.header('Face Recognition:')
-
-st.text("Using Azure I build to **_detect, identify and analyse_ faces** in images.")
-st.text("Detect the objects in images")
-
- 
-
-
-url_file =  title = st.text_input('Paste image URL')
-
-
-select=st.selectbox("select what you want to find in the image" ,['Faces','Age & emotions ','objects'])
-
-button_translate=st.button('Click me',help='To give the image')
-
-if button_translate and url_file :
-   
-
-
-        subscription_key = 'afac470736ce49ca8352ec7c83736fc7'
-        endpoint = 'https://objectdetection21.cognitiveservices.azure.com/'
 # Add your Computer Vision subscription key and endpoint to your environment variables.
+if 'COMPUTER_VISION_SUBSCRIPTION_KEY' in os.environ:
+    subscription_key = os.environ['COMPUTER_VISION_SUBSCRIPTION_KEY']
+else:
+    print("\nSet the COMPUTER_VISION_SUBSCRIPTION_KEY environment variable.\n**Restart your shell or IDE for changes to take effect.**")
+    sys.exit()
 
-        analyze_url = endpoint + "vision/v3.1/analyze"
+if 'COMPUTER_VISION_ENDPOINT' in os.environ:
+    endpoint = os.environ['COMPUTER_VISION_ENDPOINT']
+
+analyze_url = endpoint + "vision/v3.1/analyze"
+
 # Set image_url to the URL of an image that you want to analyze.
+image_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/" + \
+    "Broadway_and_Times_Square_by_night.jpg/450px-Broadway_and_Times_Square_by_night.jpg"
 
-        headers = {'Ocp-Apim-Subscription-Key': subscription_key}
-        params = {'visualFeatures': 'Categories,Description,Color'}
-        data = {'url': url_file}
-        response = requests.post(analyze_url, headers=headers,params=params, json=data)
-        response.raise_for_status()
+headers = {'Ocp-Apim-Subscription-Key': subscription_key}
+params = {'visualFeatures': 'Categories,Description,Color'}
+data = {'url': image_url}
+response = requests.post(analyze_url, headers=headers,
+                         params=params, json=data)
+response.raise_for_status()
 
-         # The 'analysis' object contains various fields that describe the image. The most
-         # relevant caption for the image is obtained from the 'description' property.
-        analysis = response.json()
-        print(json.dumps(response.json()))
-        image_caption = analysis["description"]["captions"][0]["text"].capitalize()
-        response_image = requests.get(url_file)
-        # Display the image and overlay it with the caption.
+# The 'analysis' object contains various fields that describe the image. The most
+# relevant caption for the image is obtained from the 'description' property.
+analysis = response.json()
+print(json.dumps(response.json()))
+image_caption = analysis["description"]["captions"][0]["text"].capitalize()
 
-        aux_im = Image.open(BytesIO(response_image.content))
-        
-        
-        #plt.imshow(aux_im)
-        #plt.axis("off")
-        #_ = plt.title(image_caption, size="x-large", y=-0.1)
-        #plt.show()
-
-        st.image(aux_im, caption='image_caption')
+# Display the image and overlay it with the caption.
+image = Image.open(BytesIO(requests.get(image_url).content))
+plt.imshow(image)
+plt.axis("off")
+_ = plt.title(image_caption, size="x-large", y=-0.1)
+plt.show()
