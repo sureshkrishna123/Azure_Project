@@ -62,7 +62,7 @@ if button_translate and url_file :
         # Display the image and overlay it with the caption.
 
         aux_im = Image.open(BytesIO(response_image.content))
-        return aux_im
+        
         
         #plt.imshow(aux_im)
         #plt.axis("off")
