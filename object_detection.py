@@ -59,7 +59,7 @@ if button_translate and image_file :
         response = requests.post(analyze_url, headers=headers,params=params, data=image)
         #response.raise_for_status()
         analysis = response.json()
-        print(json.dumps(response.json()))
+        print(json.dumps(analysis))
         image_caption = analysis["description"]["captions"][0]["text"].capitalize()
         response_image = requests.get(remote_image_url)
 # Display the image and overlay it with the caption.
