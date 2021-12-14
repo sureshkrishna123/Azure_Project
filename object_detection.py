@@ -40,12 +40,12 @@ if button_translate and url_file :
   
 
 
-
+        subscription_key = 'afac470736ce49ca8352ec7c83736fc7'
+        endpoint = 'https://objectdetection21.cognitiveservices.azure.com/'
 # Add your Computer Vision subscription key and endpoint to your environment variables.
 
         analyze_url = endpoint + "vision/v3.1/analyze"
 # Set image_url to the URL of an image that you want to analyze.
-        remote_image_url = "https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/landmark.jpg"
 
         headers = {'Ocp-Apim-Subscription-Key': subscription_key}
         params = {'visualFeatures': 'Categories,Description,Color'}
