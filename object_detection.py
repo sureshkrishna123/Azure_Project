@@ -58,7 +58,7 @@ if button_translate and url_file :
         analysis = response.json()
         print(json.dumps(response.json()))
         image_caption = analysis["description"]["captions"][0]["text"].capitalize()
-        response_image = requests.get(img)
+        response_image = requests.get(url_file)
         # Display the image and overlay it with the caption.
 
         aux_im = Image.open(BytesIO(response_image.content))
