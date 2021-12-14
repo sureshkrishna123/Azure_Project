@@ -37,7 +37,7 @@ select=st.selectbox("select what you want to find in the image" ,['Faces','Age &
 button_translate=st.button('Click me',help='To give the image')
 
 if button_translate and url_file :
-   def draw_face():
+   
 
 
         subscription_key = 'afac470736ce49ca8352ec7c83736fc7'
@@ -69,5 +69,4 @@ if button_translate and url_file :
         #_ = plt.title(image_caption, size="x-large", y=-0.1)
         #plt.show()
 
-   draw_face()
-   st.image(aux_im, caption='image_caption')
+        st.image(aux_im, caption='image_caption')
