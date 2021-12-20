@@ -1,5 +1,6 @@
 #Code in Google Colab
 #used by importing azure modules
+#you can run this code in any python compiler
 
 pip install --upgrade azure-cognitiveservices-vision-face
 
@@ -32,7 +33,8 @@ KEY = "ea8c44f876804e43ab35a26a09d59da5"
 ENDPOINT = "https://recognition-ai.cognitiveservices.azure.com/"
 
 face_client = FaceClient(ENDPOINT, CognitiveServicesCredentials(KEY))
-img_file = open(r'demo.jpg', 'rb')
+
+img_file = open(r'demo.jpg', 'rb') #image file location
 
 response_detected_faces = face_client.face.detect_with_stream(
      image=img_file,
