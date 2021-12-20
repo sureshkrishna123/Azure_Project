@@ -95,8 +95,8 @@ if app_mode=='Face Recognization':
             return ((left, top), (bottom, right))
 
 
-        #output_image = Image.open(BytesIO(image))
-        output_image = Image.open(image)
+        output_image = Image.open(BytesIO(image))
+        
     #   For each face returned use the face rectangle and draw a red box.
         draw = ImageDraw.Draw(output_image)
         for face in faces:
