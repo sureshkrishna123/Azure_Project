@@ -1,4 +1,7 @@
 #Code written for website in streamlit
+#All the code written using Azure API 
+# and published in github
+#using streamlit we created a webpage
 
 
 import streamlit as st
@@ -56,10 +59,10 @@ if app_mode=='Face Recognization':
   st.image(os.path.join('./images','facial-recognition-software-image.jpg'),use_column_width=True )
   st.title("Face Recognition(Powered by Azure)")
   st.header('Face Recognition:')
-  st.markdown("Using Azure I build to **_detect, identify and analyse_ faces** in images.")
+  st.markdown("Using Azure I build to detect, identify and analyse faces in images.")
   st.text("Detect the objects in images")
   
-  image_file =  st.file_uploader("Upload Images less than 1mb", type=["png","jpg","jpeg"])
+  image_file =  st.file_uploader("Upload Images (less than 1mb)", type=["png","jpg","jpeg"])
   if image_file is not None:
     img = Image.open(image_file)
     st.image(image_file,width=250,caption='Uploaded image')
