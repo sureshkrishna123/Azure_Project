@@ -64,7 +64,7 @@ if app_mode=='Face Recognization':
     img = Image.open(image_file)
     st.image(image_file,width=250,caption='Uploaded image')
     byte_io = BytesIO()
-    img.save(byte_io, 'JPG')#PNG
+    img.save(byte_io, 'PNG')#PNG
     image = byte_io.getvalue()
 
 
