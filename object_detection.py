@@ -50,41 +50,41 @@ if app_mode =='About Me':
                 ''')
     if app_mode =='Object Detection':
     
-    st.image(os.path.join('./images','object.jpg'),use_column_width=True )
-    st.markdown("<h1 style='text-align: center; color: skyblue; '> Object Recognition </h1>", unsafe_allow_html=True)
+      st.image(os.path.join('./images','object.jpg'),use_column_width=True )
+      st.markdown("<h1 style='text-align: center; color: skyblue; '> Object Recognition </h1>", unsafe_allow_html=True)
 
-    st.title("Object Recognition(Powered by Azure)")
+      st.title("Object Recognition(Powered by Azure)")
 
-    st.markdown("Using Azure I build to **_Object_ detection** , it identify and analyse the image.")
-    st.text("Detect the objects in images")
+      st.markdown("Using Azure I build to **_Object_ detection** , it identify and analyse the image.")
+      st.text("Detect the objects in images")
 
-    url_file =  title = st.text_input('Paste image address URL')
-    st.text("Example :- https://www.intelligentliving.co/wp-content/uploads/2019/12/sculptures-reclaimed-materials-brianmock8_201911323127.jpg")
-    button_translate=st.button('Click me',help='To give the image')
+      url_file =  title = st.text_input('Paste image address URL')
+      st.text("Example :- https://www.intelligentliving.co/wp-content/uploads/2019/12/sculptures-reclaimed-materials-brianmock8_201911323127.jpg")
+      button_translate=st.button('Click me',help='To give the image')
 
-    if button_translate and url_file :
+      if button_translate and url_file :
    
-        subscription_key = 'afac470736ce49ca8352ec7c83736fc7'
-        endpoint = 'https://objectdetection21.cognitiveservices.azure.com/'
+          subscription_key = 'afac470736ce49ca8352ec7c83736fc7'
+          endpoint = 'https://objectdetection21.cognitiveservices.azure.com/'
         
             # Add your Computer Vision subscription key and endpoint to your environment variables.
-        analyze_url = endpoint + "vision/v3.1/analyze"
+          analyze_url = endpoint + "vision/v3.1/analyze"
         
         # Set image_url to the URL of an image that you want to analyze.
-        headers = {'Ocp-Apim-Subscription-Key': subscription_key}
-        params = {'visualFeatures': 'Categories,Description,Color'}
-        data = {'url': url_file}
-        response = requests.post(analyze_url, headers=headers,params=params, json=data)
-        response.raise_for_status()
+          headers = {'Ocp-Apim-Subscription-Key': subscription_key}
+          params = {'visualFeatures': 'Categories,Description,Color'}
+          data = {'url': url_file}
+          response = requests.post(analyze_url, headers=headers,params=params, json=data)
+          response.raise_for_status()
 
         # The 'analysis' object contains various fields that describe the image. The most
         # relevant caption for the image is obtained from the 'description' property.
-        analysis = response.json()
-        print(json.dumps(response.json()))
-        image_caption = analysis["description"]["captions"][0]["text"].capitalize()
-        response_image = requests.get(url_file)
+          analysis = response.json()
+          print(json.dumps(response.json()))
+          image_caption = analysis["description"]["captions"][0]["text"].capitalize()
+          response_image = requests.get(url_file)
         
         # Display the image and overlay it with the caption.
-        aux_im = Image.open(BytesIO(response_image.content))
-        captio=st.subheader(image_caption)
-        st.image(aux_im, caption=image_caption)
+          aux_im = Image.open(BytesIO(response_image.content))
+          captio=st.subheader(image_caption)
+          st.image(aux_im, caption=image_caption)
