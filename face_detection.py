@@ -1,10 +1,4 @@
-#Code in Google Colab
-#used by importing azure modules
-#you can run this code in any python compiler
-
-pip install --upgrade azure-cognitiveservices-vision-face
-
-import cgitb 
+import streamlit as st
 import asyncio
 import io
 import glob
@@ -17,69 +11,98 @@ from urllib.parse import urlparse
 from io import BytesIO
 # To install this module, run:
 # python -m pip install Pillow
-from azure.cognitiveservices.vision.face import FaceClient
-from msrest.authentication import CognitiveServicesCredentials
-from PIL import Image, ImageDraw, ImageFont
-from azure.cognitiveservices.vision.face.models import TrainingStatusType, Person
-import numpy as np
-import matplotlib.pyplot as plt
+from io import BytesIO
+from PIL import Image
+from PIL import ImageDraw
+import json
+
+st.set_page_config(layout="wide")
+st.sidebar.image('images/Azure_Image.png', width=300)
+st.sidebar.header('A website using Azure Api')
+st.sidebar.markdown('Face Api,Translator Api')
 
 
-
-# This key will serve all examples in this document.
-KEY = "ea8c44f876804e43ab35a26a09d59da5"
-
-# This endpoint will be used in all examples in this quickstart.
-ENDPOINT = "https://recognition-ai.cognitiveservices.azure.com/"
-
-face_client = FaceClient(ENDPOINT, CognitiveServicesCredentials(KEY))
-
-img_file = open(r'demo.jpg', 'rb') #image file location
-
-response_detected_faces = face_client.face.detect_with_stream(
-     image=img_file,
-    detection_model='detection_01',
-    recognition_model='recognition_04',
-    return_face_attributes=['age', 'emotion'],
-
+app_mode = st.sidebar.radio(
+    "",
+    ("About Me","Face Recognization"),
 )
-print(response_detected_faces)
-
-if not response_detected_faces:
-    raise Exception('No face detected')
-
-print('Number of people detected: {0}'.format(len(response_detected_faces)))
-
-response_image = requests.get(image_url)
-img = Image.open(img_file)
-draw = ImageDraw.Draw(img)
 
 
+st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+
+st.sidebar.markdown('---')
+st.sidebar.write('N.V.Suresh Krishna | sureshkrishnanv24@gmail.com https://github.com/sureshkrishna123')
+
+if app_mode =='About Me':
+    st.image('images/wp4498220.jpg', use_column_width=True)
+    st.markdown('''
+              # About Me \n 
+                Hey this is ** N.V.Suresh Krishna **. \n
+                
+                
+                Also check me out on Social Media
+                - [git-Hub](https://github.com/sureshkrishna123)
+                - [LinkedIn](https://www.linkedin.com/in/suresh-krishna-nv/)
+                - [Instagram](https://www.instagram.com/worldofsuresh._/)
+                - [Portfolio](https://sureshkrishna123.github.io/sureshportfolio/)
+                - [Blog](https://ingenious-point.blogspot.com/)\n
+                If you are interested in building more about Microsoft Azure then   [click here](https://azure.microsoft.com/en-in/)\n
+                ''')
+               
+
+if app_mode=='Face Recognization':
+  st.image(os.path.join('./images','facial-recognition-software-image.jpg'),use_column_width=True )
+  st.title("Face Recognition(Powered by Azure)")
+  st.header('Face Recognition:')
+  st.markdown("Using Azure I build to detect, identify and analyse faces in images.")
+  st.text("Detect the objects in images")
+  
+  image_file =  st.file_uploader("Upload Images (less than 1mb)", type=["png","jpg","jpeg"])
+  if image_file is not None:
+    img = Image.open(image_file)
+    st.image(image_file,width=250,caption='Uploaded image')
+    byte_io = BytesIO()
+    img.save(byte_io, 'PNG')#PNG
+    image = byte_io.getvalue()
 
 
-for face in response_detected_faces:
-    age = face.face_attributes.age
-    emotion = face.face_attributes.emotion
-    neutral = '{0:.0f}%'.format(emotion.neutral * 100)
-    happiness = '{0:.0f}%'.format(emotion.happiness * 100)
-    anger = '{0:.0f}%'.format(emotion.anger * 100)
-    sandness = '{0:.0f}%'.format(emotion.sadness * 100)
+  button_translate=st.button('Click me',help='To give the image')
 
-    rect = face.face_rectangle
-    left = rect.left
-    top = rect.top
-    right = rect.width + left
-    bottom = rect.height + top
-    draw.rectangle(((left, top), (right, bottom)), outline='green', width=5)
+  if button_translate and image_file :
 
-    draw.text((right + 4, top), 'Age: ' + str(int(age)), fill=(255, 255, 255))
-    draw.text((right + 4, top+35), 'Neutral: ' + neutral, fill=(255, 255, 255))
-    draw.text((right + 4, top+70), 'Happy: ' + happiness, fill=(255, 255, 255))
-    draw.text((right + 4, top+105), 'Sad: ' + sandness, fill=(255, 255, 255))
-    draw.text((right + 4, top+140), 'Angry: ' + anger, fill=(255, 255, 255))
+    def draw_face(img):
+
+        subscription_key = 'ea8c44f876804e43ab35a26a09d59da5'  
+        BASE_URL = "https://recognition-ai.cognitiveservices.azure.com/" + '/face/v1.0/detect'  
+        headers = {
+        # Request headers
+        'Content-Type': 'application/octet-stream', 
+        'recognitionModel': 'recognition_01' ,
+        'Ocp-Apim-Subscription-Key': subscription_key,
+        'detectionModel': 'detection_01',
+        }
+        response = requests.post(BASE_URL, headers=headers, data=image)
+        faces = response.json()
+        print(faces)
+        def getRectangle(faceDictionary):
+            rect = faceDictionary['faceRectangle']
+            left = rect['left']
+            top = rect['top']
+            bottom = left + rect['height']
+            right = top + rect['width']
+            return ((left, top), (bottom, right))
+
+
+        output_image = Image.open(BytesIO(image))
+        
+    #   For each face returned use the face rectangle and draw a red box.
+        draw = ImageDraw.Draw(output_image)
+        for face in faces:
+            draw.rectangle(getRectangle(face), outline='red',width=2)
+        return output_image
+   #image_data = open(image_file, "rb").read()
+
+    image = draw_face(img)
+
+    st.image(image, caption='Output image')
     
-
-    
-plt.imshow(img)
-
-
