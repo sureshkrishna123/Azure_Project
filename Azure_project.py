@@ -77,8 +77,8 @@ if app_mode=='Face Recognization':
 
     def draw_face(img):
 
-        subscription_key = secrets.subscription_key
-        BASE_URL = secrets.endpoint + '/face/v1.0/detect'  
+        subscription_key = secrets.SUBSCRIPTION_KEY
+        BASE_URL = secrets.ENDPOINT + '/face/v1.0/detect'  
         headers = {
         # Request headers
         'Content-Type': 'application/octet-stream', 
