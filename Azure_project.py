@@ -230,7 +230,7 @@ if app_mode =='Translator':
 
         # Add your subscription key and endpoint
         subscription_key ="6f7488eb5fe442a8adc4cdcd4cd50474"
-        endpoint = "https://api.cognitive.microsofttranslator.com/"
+        endpoint = #https://api.cognitive.microsofttranslator.com/"
 
         # Add your location, also known as region. The default is global.
         # This is required if using a Cognitive Services resource.
