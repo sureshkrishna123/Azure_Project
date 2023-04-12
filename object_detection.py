@@ -48,7 +48,7 @@ if app_mode =='About Me':
                 - [Blog](https://ingenious-point.blogspot.com/)\n
                 If you are interested in building more about Microsoft Azure then   [click here](https://azure.microsoft.com/en-in/)\n
                 ''')
-    if app_mode =='Object Detection':
+if app_mode =='Object Detection':
     
       st.image(os.path.join('./images','object.jpg'),use_column_width=True )
       st.markdown("<h1 style='text-align: center; color: skyblue; '> Object Recognition </h1>", unsafe_allow_html=True)
