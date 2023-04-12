@@ -64,14 +64,14 @@ if app_mode =='About Me':
 
       if button_translate and url_file :
    
-          subscription_key = 'afac470736ce49ca8352ec7c83736fc7'
-          endpoint = 'https://objectdetection21.cognitiveservices.azure.com/'
+          subkey = 'a4fdea10ba144f86a8f4a58491d09864'
+          end = 'https://objectdetection007.cognitiveservices.azure.com/'
         
             # Add your Computer Vision subscription key and endpoint to your environment variables.
-          analyze_url = endpoint + "vision/v3.1/analyze"
+          analyze_url = end + "vision/v3.1/analyze"
         
         # Set image_url to the URL of an image that you want to analyze.
-          headers = {'Ocp-Apim-Subscription-Key': subscription_key}
+          headers = {'Ocp-Apim-Subscription-Key': subkey}
           params = {'visualFeatures': 'Categories,Description,Color'}
           data = {'url': url_file}
           response = requests.post(analyze_url, headers=headers,params=params, json=data)
