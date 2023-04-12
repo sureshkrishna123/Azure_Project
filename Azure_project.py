@@ -77,8 +77,8 @@ if app_mode=='Face Recognization':
 
     def draw_face(img):
 
-        subscription_key = ${{secrets.SUBSCRIPTION_KEY}}
-        BASE_URL = secrets.ENDPOINT + '/face/v1.0/detect'  
+        subscription_key = 'bebd878fe00f4b44ad407edfc137db18'
+        BASE_URL = "https://facedetect007.cognitiveservices.azure.com/" + '/face/v1.0/detect'  
         headers = {
         # Request headers
         'Content-Type': 'application/octet-stream', 
@@ -129,8 +129,8 @@ if app_mode =='Object Detection':
 
     if button_translate and url_file :
    
-        subscription_key = 'afac470736ce49ca8352ec7c83736fc7'
-        endpoint = 'https://objectdetection21.cognitiveservices.azure.com/'
+        subscription_key = 'a4fdea10ba144f86a8f4a58491d09864'
+        endpoint = 'https://objectdetection007.cognitiveservices.azure.com/'
         
             # Add your Computer Vision subscription key and endpoint to your environment variables.
         analyze_url = endpoint + "vision/v3.1/analyze"
